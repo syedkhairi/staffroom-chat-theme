@@ -1,6 +1,6 @@
 #reply-control {
   border-radius: 5px 5px 0 0;
-  border: 1px solid var(--primary-low-mid);
+  border: 0;
   box-shadow: var(--shadow-dropdown);
 
   .composer-fields:empty {
@@ -19,7 +19,7 @@
   }
 
   &:hover {
-    border: 1px solid var(--redditish-border-highlight-color);
+    // border: 1px solid var(--redditish-border-highlight-color);
   }
 
   .grippie {
@@ -36,7 +36,7 @@
 
     &:hover {
       &:before {
-        border-top-color: var(--redditish-border-highlight-color);
+        // border-top-color: var(--redditish-border-highlight-color);
       }
     }
   }

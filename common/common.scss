@@ -4,9 +4,9 @@
 }
 
 :root {
-  --d-button-border-radius: 100px;
+  --d-button-border-radius: 0.375rem;
   --d-nav-pill-border-radius: 0.375rem;
-  --d-input-border-radius: 4px;
+  --d-input-border-radius: 0.375rem;
   --topic-body-width: 900px;
 }
 
@@ -115,6 +115,10 @@ body {
       display: none;
     }
   }
+}
+
+.d-modal__container {
+  border-radius: 0.375rem;
 }
 
 .btn-default,

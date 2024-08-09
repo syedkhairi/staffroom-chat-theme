@@ -1,7 +1,7 @@
 {
   "about_url": null,
   "license_url": null,
-  "name": "redditish",
+  "name": "staffroom-chat",
   "modifiers": {
     "serialize_topic_excerpts": true,
     "topic_thumbnail_sizes": [[620, 500]]
