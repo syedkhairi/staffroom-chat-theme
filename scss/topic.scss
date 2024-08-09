@@ -1,7 +1,7 @@
 #topic-title {
   background: var(--primary);
   margin: 0;
-  border-radius: 4px 4px 0 0;
+  border-radius: 0.375rem 0.375rem 0 0;
   @include custom-topic-width;
   box-sizing: border-box;
   padding: 1em 2em;
@@ -186,17 +186,17 @@
 
 .posts-wrapper {
   @include custom-card;
-  border-radius: 0 0 4px 4px;
+  border-radius: 0 0 0.375rem 0.375rem;
   border-top: none !important;
   padding: 1em 2em 2em;
 }
 
 .topic-map {
-  border-radius: 4px;
+  border-radius: 0.375rem;
 }
 
 .map:first-of-type .buttons .btn {
-  border-radius: 0;
+  border-radius: 0.375rem;
 }
 
 h3.suggested-topics-message {
@@ -219,7 +219,7 @@ html:not(.footer-nav-visible) #topic-progress-wrapper {
     }
   }
   #topic-progress-wrapper {
-    --d-border-radius: 100px;
+    --d-border-radius: 0.375rem
 
     .topic-admin-menu-button .toggle-admin-menu {
       border-right: none;

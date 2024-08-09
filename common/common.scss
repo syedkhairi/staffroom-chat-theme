@@ -50,70 +50,30 @@ body {
   background: var(--redditish-bg-color);
   background-image: none !important; /* overrides category bg because we use it for banners instead */
 
-  /* pepesilva.jpg */
-  &.tags-page,
-  &[class*="navigation-"]:not([class*="archetype-"]),
-  &[class*="category-"]:not([class*="archetype-"]) {
-    #main-outlet-wrapper {
-      width: 100%;
-      grid-template-areas:
-        "category-banner category-banner category-banner"
-        "content content sidebar2";
-      // grid-template-columns: var(--d-sidebar-width) 1fr minmax(0, 640px) 1fr var(
-      //     --d-sidebar-width
-      //   );
-      // grid-template-rows: auto 1fr;
-      // gap: 0 0.5rem 0.75rem;
-      grid-template-columns: 1fr 1fr 1fr;
-      column-gap: 3.5rem;
-
-      @media screen and (max-width: 1500px) {
-        grid-template-columns: auto 2fr 1fr;
-      }
-
-      @media screen and (max-width: 1160px) {
-        .custom-right-sidebar {
-          display: none;
-        }
-        grid-template-areas:
-        "category-banner category-banner category-banner"
-        "sidebar content sidebar2";
-        grid-template-columns: auto 2fr 1fr;
-      }
-
-      @media screen and (max-width: 768px) {
-        gap: 0.5em;
-      }
-    }
+  #main-outlet-wrapper {
+    display: flex;
+    flex-direction: row;
+    column-gap: 2rem;
   }
 
-  &.has-sidebar-page.tags-page,
-  &.has-sidebar-page[class*="navigation-"]:not([class*="archetype-"]),
-  &.has-sidebar-page[class*="category-"]:not([class*="archetype-"]) {
-    #main-outlet-wrapper {
-      grid-template-areas:
-        "category-banner category-banner category-banner"
-        "sidebar content sidebar2";
-
-      @media screen and (max-width: 1160px) {
-        .custom-right-sidebar {
-          display: none;
-        }
-        grid-template-areas:
-        "category-banner category-banner category-banner"
-        "sidebar content sidebar2";
-        grid-template-columns: auto 2fr 1fr;
-      }
-    }
+  .sidebar-wrapper {
+    min-width: min-content;
   }
 
-  &[class*="user-"],
-  &.archetype-regular {
-    .custom-tag-banner,
-    .custom-category-banner,
-    .custom-right-sidebar {
-      display: none;
-    }
+  .sidebar-container {
+    min-width: 15rem;
+    max-width: 20rem;
+  }
+
+  .custom-right-sidebar {
+    max-width: 20rem;
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
+
+  #main-outlet > * {
+    width: 100%;
+    flex-grow: 1;
   }
 }
 
@@ -131,12 +91,6 @@ body {
 
 .btn[class*="popup-menu-btn"] {
   border: none;
-}
-
-#main-outlet {
-  width: 100%;
-  margin: 0 auto;
-  grid-area: content;
 }
 
 #banner {
