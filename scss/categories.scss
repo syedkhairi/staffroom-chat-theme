@@ -1,0 +1,27 @@
+.categories-and-latest,
+.categories-and-top,
+.category-list {
+  @include custom-card;
+}
+
+.navigation-categories {
+  #main-outlet-wrapper #main-outlet {
+    grid-column-end: sidebar2;
+
+    @media screen and (max-width: 1160px) {
+      grid-column-end: auto;
+    }
+  }
+
+  .custom-right-sidebar {
+    display: none;
+  }
+
+  .list-controls {
+    gap: 0.25em;
+  }
+
+  #navigation-bar {
+    display: none;
+  }
+}

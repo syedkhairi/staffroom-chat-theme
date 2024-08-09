@@ -1,0 +1,142 @@
+<div class="overflow-hidden rounded-lg border bg-white">
+  <div class="px-4 py-5 sm:px-6 sm:pb-6 sm:pt-4">
+    <!-- Start header -->
+    <div class="flex flex-row items-start justify-between">
+      <!-- Start avatar and name -->
+      <div class="flex flex-row items-center space-x-3 align-middle">
+        <div class="inline-block size-9 rounded-full">
+          {{avatar topic.posters.0.user imageSize="large"}}
+        </div>
+        <div class="flex flex-col">
+          <span class="font-medium truncate max-w-48">
+            {{topic.posters.0.user.name}}
+          </span>
+          <a
+            class="text-sm"
+            data-user-card={{topic.posters.0.user.username}}
+            href="/u/{{topic.posters.0.user.username}}"
+          >
+            @{{topic.posters.0.user.username}}
+          </a>
+        </div>
+      </div>
+      <!-- End avatar and name -->
+      <div class="flex flex-col items-end gap-y-1">
+        {{#unless hideCategory}}
+          {{#unless topic.isPinnedUncategorized}}
+            {{!-- {{~raw-plugin-outlet name="topic-list-before-category"}} --}}
+            {{!-- <span class="flex flex-row items-center align-middle rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600 truncate max-w-48">
+              {{category-link topic.category}}
+            </span> --}}
+            {{category-link topic.category}}
+          {{/unless}}
+        {{/unless}}
+        <span class="text-xs">
+          {{format-date
+            topic.createdAt
+            format="medium"
+            noTitle="true"
+            leaveAgo="true"
+          }}
+        </span>
+      </div>
+    </div>
+    <!-- End header -->
+    <div class="space-y-1.5">
+      <h3 class="text-xl font-medium truncate">
+        {{~raw "topic-status" topic=topic}}
+        {{~topic-link topic class="raw-link raw-topic-link"}}
+        {{~#if topic.featured_link}}
+          {{~topic-featured-link topic}}
+        {{~/if}}
+        {{~raw-plugin-outlet name="topic-list-after-title"}}
+        {{~raw
+          "list/unread-indicator"
+          includeUnreadIndicator=includeUnreadIndicator
+          topicId=topic.id
+          unreadClass=unreadClass
+        ~}}
+        {{~#if showTopicPostBadges}}
+          {{~raw
+            "topic-post-badges"
+            unreadPosts=topic.unread_posts
+            unseen=topic.unseen
+            url=topic.lastUnreadUrl
+            newDotText=newDotText
+          }}
+        {{~/if}}
+      </h3>
+      {{#if topic.thumbnails}}
+        <div class="custom-topic-layout_image">
+          <img
+            height={{topic.thumbnails.0.height}}
+            width={{topic.thumbnails.0.width}}
+            src={{topic.thumbnails.0.url}}
+          />
+        </div>
+      {{/if}}
+      <p>
+        {{#unless topic.thumbnails}}
+          <div class="custom-topic-layout_excerpt">
+            {{raw "list/topic-excerpt" topic=topic}}
+          </div>
+        {{/unless}}
+      </p>
+    </div>
+    <!-- Start footer -->
+    <div class="mt-5 flex flex-row items-center gap-x-9">
+      <!-- Start replies -->
+      <div class="flex flex-row items-center gap-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-reply size-5 stroke-gray-500">
+          <polyline points="9 17 4 12 9 7" />
+          <path d="M20 18v-2a4 4 0 0 0-4-4H4" />
+        </svg>
+        {{#if topic.posters.[1]}}
+          <div class="flex -space-x-1 overflow-hidden">
+            {{#if topic.posters.[1]}}
+              <div class="inline-block h-6 w-6 rounded-full ring-2 ring-white">
+                {{avatar topic.posters.1.user imageSize="large"}}
+              </div>
+            {{/if}}
+            {{#if topic.posters.[2]}}
+              <div class="inline-block h-6 w-6 rounded-full ring-2 ring-white">
+                {{avatar topic.posters.2.user imageSize="large"}}
+              </div>
+            {{/if}}
+            {{#if topic.posters.[3]}}
+              <div class="inline-block h-6 w-6 rounded-full ring-2 ring-white">
+                {{avatar topic.posters.3.user imageSize="large"}}
+              </div>
+            {{/if}}
+            {{#if topic.posters.[4]}}
+              <div class="inline-block h-6 w-6 rounded-full ring-2 ring-white">
+                {{avatar topic.posters.4.user imageSize="large"}}
+              </div>
+            {{/if}}
+          </div>
+        {{/if}}
+        <a href="{{topic.summaryUrl}}" class="text-sm text-gray-500">
+          {{topic.replyCount}} replies
+        </a>
+      </div>
+      <!-- Start reactions -->
+      <div class="flex flex-row items-center gap-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart size-5 stroke-gray-500"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" /></svg>
+        <a href="{{topic.summaryUrl}}" class="text-sm text-gray-500">
+          {{number topic.like_count}}
+        </a>
+      </div>
+      <!-- Start views -->
+      <div class="flex flex-row items-center gap-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye size-5 stroke-gray-500">
+          <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+          <circle cx="12" cy="12" r="3" />
+        </svg>
+        <a href="{{topic.summaryUrl}}" class="text-sm text-gray-500">{{number topic.views numberKey="views_long"}} views </a>
+      </div>
+      <div class="ml-auto">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bookmark size-5 stroke-gray-500"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z" /></svg>
+      </div>
+    </div>
+  </div>
+</div>
