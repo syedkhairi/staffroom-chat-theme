@@ -75,13 +75,11 @@
           />
         </div>
       {{/if}}
-      <p>
-        {{#unless topic.thumbnails}}
-          <div class="custom-topic-layout_excerpt">
-            {{raw "list/topic-excerpt" topic=topic}}
-          </div>
-        {{/unless}}
-      </p>
+      {{#unless topic.thumbnails}}
+        <div class="text-base text-gray-900">
+          {{raw "list/topic-excerpt" topic=topic}}
+        </div>
+      {{/unless}}
     </div>
     <!-- Start footer -->
     <div class="mt-5 flex flex-row items-center gap-x-9">
@@ -94,22 +92,22 @@
         {{#if topic.posters.[1]}}
           <div class="flex -space-x-1 overflow-hidden">
             {{#if topic.posters.[1]}}
-              <div class="inline-block h-6 w-6 rounded-full ring-2 ring-white">
+              <div class="inline-block size-5 rounded-full ring-2 ring-white">
                 {{avatar topic.posters.1.user imageSize="large"}}
               </div>
             {{/if}}
             {{#if topic.posters.[2]}}
-              <div class="inline-block h-6 w-6 rounded-full ring-2 ring-white">
+              <div class="inline-block size-5 rounded-full ring-2 ring-white">
                 {{avatar topic.posters.2.user imageSize="large"}}
               </div>
             {{/if}}
             {{#if topic.posters.[3]}}
-              <div class="inline-block h-6 w-6 rounded-full ring-2 ring-white">
+              <div class="inline-block size-5 rounded-full ring-2 ring-white">
                 {{avatar topic.posters.3.user imageSize="large"}}
               </div>
             {{/if}}
             {{#if topic.posters.[4]}}
-              <div class="inline-block h-6 w-6 rounded-full ring-2 ring-white">
+              <div class="inline-block size-5 rounded-full ring-2 ring-white">
                 {{avatar topic.posters.4.user imageSize="large"}}
               </div>
             {{/if}}
