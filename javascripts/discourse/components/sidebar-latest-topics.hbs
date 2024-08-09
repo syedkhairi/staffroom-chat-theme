@@ -1,13 +1,49 @@
-<h4>Recent Topics</h4>
-<div
-  class="custom-right-sidebar_recent-topics"
+<h3 class="text-lg font-medium text-gray-700">Recent Topics</h3>
+<ul role="list"
+  class="px-1"
   {{did-insert this.getLatestTopics}}
 >
   {{#each this.latestTopics as |topic|}}
+    <li class="flex w-full flex-row items-center gap-x-3 py-4">
+      <div class="shrink-0 size-5 rounded-full bg-gray-800">
+        {{avatar topic.posters.0.user imageSize="small"}}
+      </div>
+      <div class="w-full flex flex-col">
+        <div class="flex flex-row justify-between gap-x-5">
+          <h3 class="line-clamp-2 font-medium text-gray-900">
+            {{~topic-link topic class="raw-link raw-topic-link"}}
+          </h3>
+          <time class="flex-none self-start text-xs text-gray-500 mt-1">
+            {{format-date
+              topic.createdAt
+              format="medium"
+              noTitle="true"
+              leaveAgo="true"
+            }}
+          </time>
+        </div>
+        <div class="flex flex-row justify-between">
+          <p class="max-w-40 truncate text-sm text-gray-500">
+            <a
+              data-user-card={{topic.posters.0.user.username}}
+              href="/u/{{topic.posters.0.user.username}}"
+            >@{{topic.posters.0.user.username}}</a>
+          </p>
+          <span class="max-w-20 sm:max-w-32 truncate text-sm">
+            {{#unless hideCategory}}
+              {{#unless topic.isPinnedUncategorized}}
+                {{category-link topic.category}}
+              {{/unless}}
+            {{/unless}}
+          </span>
+        </div>
+      </div>
+    </li>
+
     {{! this is largely topic-list-item.hbr, 
         but using that component directly was causing 
         eyeline issues with loading more topics on }}
-    <div class="custom-right-sidebar_recent-topics-wrappper">
+    {{!-- <div class="custom-right-sidebar_recent-topics-wrappper">
       <div class="custom-topic-layout">
         <div class="custom-topic-layout_meta">
           {{#unless hideCategory}}
@@ -63,6 +99,6 @@
         </div>
       </div>
 
-    </div>
+    </div> --}}
   {{/each}}
-</div>
+</ul>

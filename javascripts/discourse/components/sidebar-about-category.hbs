@@ -1,7 +1,49 @@
 {{#if this.category}}
   {{! ensure we've got something to show so we don't get an empty block}}
   {{#if (or this.category.description this.currentUser)}}
-    <div class="custom-right-sidebar_category-about">
+    <div class="overflow-hidden rounded-lg bg-gray-100">
+      <div class="px-4 py-5 sm:px-5 sm:pb-5 sm:pt-4">
+        {{#if this.category.description}}
+          <h3 class="text-lg font-medium text-gray-700">
+            {{theme-i18n "about_category"}}
+          </h3>
+          <p class="mt-1 text-gray-600">{{html-safe this.category.description}}</p>
+        {{else}}
+          {{#if this.currentUser.admin}}
+            <h3 class="text-lg font-medium text-gray-700">
+              {{theme-i18n "about_admin_tip_headline"}}
+            </h3>
+            <p class="mt-1 text-gray-600">
+              {{html-safe this.linkedDescription}}
+            </p>
+          {{/if}}
+        {{/if}}
+        {{#if this.currentUser}}
+        <div class="flex w-full flex-row mt-5 gap-x-4">
+          <DButton
+            @class="grow rounded-md bg-gray-200 px-3.5 py-2.5 text-sm font-semibold text-gray-900 hover:bg-gray-300"
+            @id="custom-create-topic"
+            @action={{action "customCreateTopic"}}
+            @icon="plus"
+            @translatedLabel={{i18n "topic.create"}}
+          />
+          {{!-- <CategoryNotificationsButton
+            @class="rounded-md bg-gray-200 size-10 p-2.5 text-sm font-semibold text-gray-900 hover:bg-gray-300"
+            @value={{this.categoryNotificationLevel}}
+            @category={{this.category}}
+            @onChange={{action "changeCategoryNotificationLevel"}}
+          /> --}}
+
+          <AddToSidebar 
+            @tag={{this.tag}} 
+            @category={{this.category}} 
+          />
+        </div>
+        {{/if}}
+      </div>
+    </div>
+
+    {{!-- <div class="custom-right-sidebar_category-about">
       {{#if this.category.description}}
         <h3>{{theme-i18n "about_category"}}</h3>
         <p>{{html-safe this.category.description}}</p>
@@ -37,10 +79,40 @@
         </div>
       {{/if}}
 
-    </div>
+    </div> --}}
     {{#if (or this.category.subcategories this.site.category_top_tags)}}
 
-      <div class="custom-right-sidebar_category-about -tags-and-subcategories">
+      {{#if this.category.subcategories}}
+        <div class="overflow-hidden rounded-lg bg-gray-100">
+          <div class="px-4 py-5 sm:px-5 sm:pb-5 sm:pt-4">
+            <h3 class="text-lg font-medium text-gray-700">
+              Subcategories
+            </h3>
+            {{#each this.category.subcategories as |subcategory|}}
+              {{category-link subcategory}}
+            {{/each}}
+          </div>
+        </div>
+      {{/if}}
+
+      {{#if this.site.category_top_tags}}
+        <div class="overflow-hidden rounded-lg bg-gray-100">
+          <div class="px-4 py-5 sm:px-5 sm:pb-5 sm:pt-4">
+            <h3 class="text-lg font-medium text-gray-700">
+              Top Tags
+            </h3>
+            {{#each this.site.category_top_tags as |tag|}}
+              <a
+                class="inline-flex items-center rounded-md bg-yellow-100 px-2 py-1 text-xs font-medium text-yellow-800"
+                href="/tags/c/{{this.category.slug}}/{{tag}}"
+                data-tag-name="{{tag}}"
+              >{{tag}}</a>
+            {{/each}}
+          </div>
+        </div>
+      {{/if}}
+
+      {{!-- <div class="custom-right-sidebar_category-about -tags-and-subcategories">
 
         {{#if this.category.subcategories}}
           <div class="custom-right-sidebar_subcategories">
@@ -66,7 +138,7 @@
             </div>
           </div>
         {{/if}}
-      </div>
+      </div> --}}
     {{/if}}
   {{/if}}
 {{/if}}

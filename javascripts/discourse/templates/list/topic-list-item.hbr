@@ -12,7 +12,7 @@
             {{topic.posters.0.user.name}}
           </span>
           <a
-            class="text-sm"
+            class="text-sm text-gray-500"
             data-user-card={{topic.posters.0.user.username}}
             href="/u/{{topic.posters.0.user.username}}"
           >

@@ -1,7 +1,7 @@
 {{#unless this.shouldNotRender}}
   <DButton
     @action={{action "toggleInSidebar"}}
-    @class="btn-default add-to-sidebar {{if this.isInSidebar 'in-sidebar'}}"
+    @class="rounded-md bg-gray-200 size-10 p-2.5 text-sm font-semibold text-gray-900 hover:bg-gray-300"
     @icon={{this.buttonIcon}}
   />
 {{/unless}}
