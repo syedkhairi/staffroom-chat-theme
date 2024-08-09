@@ -31,7 +31,7 @@
             {{category-link topic.category}}
           {{/unless}}
         {{/unless}}
-        <span class="text-xs">
+        <span class="text-xs text-gray-500">
           {{format-date
             topic.createdAt
             format="medium"
@@ -42,7 +42,7 @@
       </div>
     </div>
     <!-- End header -->
-    <div class="space-y-1.5">
+    <div class="mt-2 space-y-1.5">
       <h3 class="text-xl font-medium truncate">
         {{~raw "topic-status" topic=topic}}
         {{~topic-link topic class="raw-link raw-topic-link"}}

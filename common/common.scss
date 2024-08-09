@@ -1,6 +1,11 @@
+@font-face {
+  font-family: Geist;
+  src: url($geist) format('woff2')
+}
+
 :root {
   --d-button-border-radius: 100px;
-  --d-nav-pill-border-radius: 100px;
+  --d-nav-pill-border-radius: 0.375rem;
   --d-input-border-radius: 4px;
   --topic-body-width: 900px;
 }
@@ -44,12 +49,6 @@
 body {
   background: var(--redditish-bg-color);
   background-image: none !important; /* overrides category bg because we use it for banners instead */
-
-  &:not(.has-sidebar-page) {
-    .sidebar-wrapper {
-      background: var(--redditish-bg-color);
-    }
-  }
 
   /* pepesilva.jpg */
   &.tags-page,
@@ -137,11 +136,9 @@ body {
   @include custom-card;
 }
 
-.sidebar-wrapper .sidebar-container {
-  border-right: 1px solid var(--redditish-border-color);
-  &:hover {
-    border-color: var(--redditish-border-highlight-color);
-  }
+.sidebar-wrapper {
+  background-color: transparent;
+  border: none;
 }
 
 .sidebar-section-wrapper
@@ -149,9 +146,38 @@ body {
   padding-left: 0;
 }
 
-.sidebar-section-link-wrapper button {
-  border-radius: 0;
-  padding: 0 var(--d-sidebar-row-horizontal-padding) !important; // overrides button specificity
+.sidebar-section-content {
+  > * + * {
+    margin-top: 0.5em;
+  }
+  padding-right: 0.5rem;
+}
+
+.sidebar-section-link-wrapper {
+  font-family: Geist;
+  border-radius: 0.375rem;
+}
+
+.sidebar-section-link {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+
+  &:hover {
+    border-radius: 0.375rem;
+  }
+}
+
+.sidebar-section-link-wrapper .sidebar-section-link.active {
+  border-radius: 0.375rem;
+}
+
+.sidebar-section-header-collapsable {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
 }
 
 .add-to-sidebar {
@@ -182,4 +208,8 @@ body {
 
 html.composer-open #main-outlet {
   padding-bottom: var(--composer-height);
+}
+
+h3 {
+  font-family: Geist;
 }

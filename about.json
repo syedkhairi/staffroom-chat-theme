@@ -1,7 +1,6 @@
 {
   "about_url": null,
   "license_url": null,
-  "assets": {},
   "name": "redditish",
   "modifiers": {
     "serialize_topic_excerpts": true,
@@ -11,5 +10,8 @@
   "components": [
     "https://github.com/discourse/discourse-full-width-component.git",
     "https://github.com/discourse/discourse-header-search.git"
-  ]
+  ],
+  "assets": {
+    "geist": "assets/GeistVF.woff2"
+  }
 }
