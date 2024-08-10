@@ -38,6 +38,11 @@ export default class SidebarWelcome extends Component {
     }
   }
 
+  @action
+  goToProfile() {
+    window.location.href = `/u/${this.currentUser.username}/summary`;
+  }
+
   setupComponent(attrs, component) {
     if (!this.site.mobileView) {
       withPluginApi("0.8.7", (api) => {
