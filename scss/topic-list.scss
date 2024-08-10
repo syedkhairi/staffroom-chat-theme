@@ -127,6 +127,8 @@ div.education {
 }
 
 .topic-list {
+  min-width: 0;
+  max-width: 95svw;
   display: flex;
 
   .topic-list-item {

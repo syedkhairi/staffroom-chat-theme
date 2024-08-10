@@ -58,7 +58,7 @@ body {
     grid-template-areas: 
     "l-sidebar category-banner r-sidebar"
     "l-sidebar content r-sidebar";
-    grid-template-columns: minmax(0, 15rem) 1fr minmax(0, 20rem);
+    grid-template-columns: auto 1fr auto;
     gap: 0 2rem;
   }
 
@@ -82,7 +82,7 @@ body {
 
   .sidebar-wrapper {
     grid-area: l-sidebar;
-    min-width: min-content;
+    width: min-content;
   }
 
   .sidebar-container {
@@ -106,6 +106,28 @@ body {
   #main-outlet {
     grid-area: content;
     grid-column: 1 / -1;
+  }
+
+  @media screen and (max-width: 1000px) {
+    .custom-right-sidebar {
+      display: none;
+    }
+
+    &:not(.has-sidebar-page) #main-outlet-wrapper {
+      grid-template-areas: 
+      "category-banner"
+      "content";
+      grid-template-columns: 1fr;
+      grid-column-gap: 0;
+    }
+
+    &.has-sidebar-page #main-outlet-wrapper {
+      grid-template-areas: 
+      "l-sidebar category-banner"
+      "l-sidebar content";
+      grid-template-columns: minmax(0, 15rem) 1fr;
+      gap: 0 2rem;
+    }
   }
 }
 
