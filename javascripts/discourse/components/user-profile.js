@@ -13,4 +13,8 @@ export default class SidebarWelcome extends Component {
     const topMenuRoutes = this.siteSettings.top_menu.split("|").filter(Boolean);
     return topMenuRoutes.includes(currentRoute.localName);
   }
+
+  get avatarUrl() {
+    return this.currentUser.avatar_template.replace("{size}", 120);
+  }
 }
