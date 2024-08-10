@@ -58,7 +58,7 @@ body {
     grid-template-areas: 
     "l-sidebar category-banner r-sidebar"
     "l-sidebar content r-sidebar";
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto auto auto;
     gap: 0 2rem;
   }
 
