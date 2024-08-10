@@ -6,7 +6,7 @@
 
 .navigation-categories {
   #main-outlet-wrapper #main-outlet {
-    grid-column-end: sidebar2;
+    grid-column-end: r-sidebar;
 
     @media screen and (max-width: 1160px) {
       grid-column-end: auto;
