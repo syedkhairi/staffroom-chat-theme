@@ -3,6 +3,10 @@ import { inject as service } from "@ember/service";
 import { withPluginApi } from "discourse/lib/plugin-api";
 import { ajax } from "discourse/lib/ajax";
 import { getURLWithCDN } from "discourse-common/lib/get-url";
+import { tracked } from "@glimmer/tracking";
+import { action } from "@ember/object";
+
+const endpoint = settings.site_navigation_links_endpoint;
 
 export default class SidebarWelcome extends Component {
   @service router;
@@ -10,6 +14,7 @@ export default class SidebarWelcome extends Component {
   @service siteSettings;
   @service site;
   @service currentUser;
+  @tracked bgUrl = null;
 
   get isTopRoute() {
     const { currentRoute } = this.router;
@@ -21,12 +26,16 @@ export default class SidebarWelcome extends Component {
     return this.currentUser.avatar_template.replace("{size}", 120);
   }
 
-  get profileHeaderUrl() {
-    ajax(`/u/${this.currentUser.username}/summary.json`).then((result) => {
-      console.log(result);
-      const userCardBg = result.user.card_background_upload_url;
-      return getURLWithCDN(userCardBg);
-    });
+  @action
+  async fetchBgUrl() {
+   try {
+      const response = await fetch(`/u/${this.currentUser.username}.json`);
+      const data = await response.json(); // assuming this is json
+      const userCardBg = data.user.profile_background_upload_url;
+      this.bgUrl = getURLWithCDN(userCardBg);
+    } catch (error) {
+      console.error("Failed:", error);
+    }
   }
 
   setupComponent(attrs, component) {
