@@ -84,7 +84,7 @@
 .topic-admin-menu-button {
   > button,
   .topic-notifications-button summary {
-    @include custom-card;
+    // @include custom-card;
     height: 2.6em; // consistency hack
     padding-top: 0.6em;
     padding-bottom: 0.65em;
@@ -205,6 +205,22 @@ h3.suggested-topics-message {
 
 .more-topics__container .nav {
   position: relative;
+}
+
+.more-topics__container {
+  @include custom-topic-width;
+}
+
+#suggested-topics-title {
+  font-weight: 500;
+  font-family: Geist;
+  padding-bottom: 1rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.more-topics__browse-more {
+  padding-top: 1rem;
 }
 
 html:not(.footer-nav-visible) #topic-progress-wrapper {

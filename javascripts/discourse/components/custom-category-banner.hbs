@@ -1,5 +1,18 @@
 {{#if this.category}}
-  <div class="custom-category-banner">
+  <div class="custom-category-banner flex w-full flex-row items-center gap-x-5">
+    {{#if this.category.uploaded_logo.url}}
+      <div class="size-14 rounded-xl object-cover">
+        <CategoryLogo @category={{this.category}} />
+      </div>
+    {{else}}
+      <div class="size-12 rounded-lg" style="{{this.categoryBgColor}}"></div>
+    {{/if}}
+    {{#unless this.category.uploaded_logo.url}}
+      <a href="/c/{{this.category.name}}" class="text-3xl font-medium first-letter:uppercase">{{this.category.name}}</a>
+    {{/unless}}
+  </div>
+
+  {{!-- <div class="custom-category-banner">
     {{#if this.category.uploaded_logo.url}}
       <div class="custom-category-banner_background" style="{{this.bannerBg}}">
         <CategoryLogo @category={{this.category}} />
@@ -19,5 +32,5 @@
         </div>
       {{/unless}}
     </div>
-  </div>
+  </div> --}}
 {{/if}}

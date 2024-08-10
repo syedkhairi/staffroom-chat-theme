@@ -27,3 +27,7 @@
     border: 1px solid var(--redditish-border-highlight-color);
   }
 }
+
+.floating-search-input .search-banner-inner.wrap .search-menu .search-input {
+  border-radius: 0.375rem;
+}

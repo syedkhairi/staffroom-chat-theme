@@ -21,6 +21,10 @@ body.category,
   @include custom-topic-width;
 }
 
+.topic-above-footer-buttons-outlet.presence {
+  min-height: 0;
+}
+
 #suggested-topics-title {
   font-weight: normal;
 }
