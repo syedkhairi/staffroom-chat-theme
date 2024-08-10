@@ -354,3 +354,11 @@ html.composer-open #main-outlet {
 h3 {
   font-family: Geist;
 }
+
+.d-modal.login-modal .login-right-side, .d-modal.create-account .login-right-side {
+  max-width: max-content;
+}
+
+.passkey-login-button {
+  width: fit-content;
+}

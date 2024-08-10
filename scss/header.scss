@@ -12,10 +12,43 @@
 }
 
 .menu-panel {
-  border-radius: 4px;
-
   &:hover {
     border: 1px solid var(--redditish-border-highlight-color);
+  }
+}
+
+.menu-panel.drop-down {
+  border-radius: 0.375rem;
+}
+
+.user-menu .quick-access-panel li, .user-notifications-list li {
+  border-radius: 0.375rem;
+  margin-top: 0.4rem;
+
+  &:hover {
+    border-radius: 0.375rem;
+  }
+
+  &:nth-child(1) {
+    margin-top: 0;
+  }
+}
+
+.user-menu.revamped .tabs-list .btn.active, .user-menu.revamped .tabs-list .d-modal.json-schema-editor-modal .je-ready .active.json-editor-btn-add, .d-modal.json-schema-editor-modal .je-ready .user-menu.revamped .tabs-list .active.json-editor-btn-add, .user-menu.revamped .tabs-list .d-modal.json-schema-editor-modal .je-ready button.active, .d-modal.json-schema-editor-modal .je-ready .user-menu.revamped .tabs-list button.active {
+  border-radius: 0.375rem;
+
+  &:hover {
+    border-radius: 0.375rem;
+  }
+}
+
+.user-menu.revamped .menu-tabs-container .top-tabs {
+  > * + * {
+    margin-top: 0.5em;
+  }
+
+  &:nth-child(1) {
+    margin-top: 0;
   }
 }
 
