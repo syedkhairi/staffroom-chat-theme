@@ -7,8 +7,7 @@
         <div class="inline-block size-9 rounded-full">
           {{avatar topic.posters.0.user imageSize="large"}}
 
-          {{topic.posters.0.user.flair_group_id}}
-          <UserProfileAvatar />
+          {{topic.posters.0.user.flair_url}}
         </div>
         <div class="flex flex-col">
           <span class="font-medium truncate max-w-sm">
