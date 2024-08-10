@@ -50,89 +50,163 @@
 @import "user";
 @import "post-voting";
 
+// body {
+//   background: var(--redditish-bg-color);
+//   background-image: none !important; /* overrides category bg because we use it for banners instead */
+
+//   &.has-sidebar-page #main-outlet-wrapper {
+//     grid-template-areas: 
+//     "l-sidebar category-banner r-sidebar"
+//     "l-sidebar content r-sidebar";
+//     grid-template-columns: auto auto auto;
+//     gap: 0 2rem;
+//   }
+
+//   &:not(.has-sidebar-page) #main-outlet-wrapper {
+//     grid-template-areas: 
+//     "category-banner r-sidebar"
+//     "content r-sidebar";
+//     grid-template-columns: 1fr minmax(0, 20rem);
+//     grid-column-gap: 2rem;
+
+//     .sidebar-wrapper {
+//       display: none;
+//     }
+//   }
+
+//   #main-outlet-wrapper {
+//     width: 100%;
+//     display: grid;
+//     grid-template-rows: auto auto;
+//   }
+
+//   .sidebar-wrapper {
+//     grid-area: l-sidebar;
+//     width: min-content;
+//   }
+
+//   .sidebar-container {
+//     min-width: 15rem;
+//     max-width: 20rem;
+//   }
+
+//   .custom-right-sidebar {
+//     min-width: min-content;
+//     grid-area: r-sidebar;
+//     max-width: 20rem;
+//     flex-shrink: 0;
+//     flex-grow: 0;
+//   }
+
+//   #main-outlet > * {
+//     width: 100%;
+//     flex-grow: 1;
+//   }
+
+//   #main-outlet {
+//     grid-area: content;
+//     grid-column: 1 / -1;
+//   }
+
+//   @media screen and (max-width: 1000px) {
+//     .custom-right-sidebar {
+//       display: none;
+//     }
+
+//     &:not(.has-sidebar-page) #main-outlet-wrapper {
+//       grid-template-areas: 
+//       "category-banner"
+//       "content";
+//       grid-template-columns: 1fr;
+//       grid-column-gap: 0;
+//     }
+
+//     &.has-sidebar-page #main-outlet-wrapper {
+//       grid-template-areas: 
+//       "l-sidebar category-banner"
+//       "l-sidebar content";
+//       grid-template-columns: minmax(0, 15rem) 1fr;
+//       gap: 0 2rem;
+//     }
+//   }
+// }
+
 body {
   background: var(--redditish-bg-color);
   background-image: none !important; /* overrides category bg because we use it for banners instead */
 
-  &.has-sidebar-page #main-outlet-wrapper {
-    grid-template-areas: 
-    "l-sidebar category-banner r-sidebar"
-    "l-sidebar content r-sidebar";
-    grid-template-columns: auto auto auto;
-    gap: 0 2rem;
-  }
-
-  &:not(.has-sidebar-page) #main-outlet-wrapper {
-    grid-template-areas: 
-    "category-banner r-sidebar"
-    "content r-sidebar";
-    grid-template-columns: 1fr minmax(0, 20rem);
-    grid-column-gap: 2rem;
-
+  &:not(.has-sidebar-page) {
     .sidebar-wrapper {
-      display: none;
+      background: var(--redditish-bg-color);
     }
   }
 
-  #main-outlet-wrapper {
-    width: 100%;
-    display: grid;
-    grid-template-rows: auto auto;
-  }
+  // this is for topic list, category page WITHOUT sidebar
+  &:not(.has-sidebar-page).tags-page,
+  &:not(.has-sidebar-page)[class*="navigation-"]:not([class*="archetype-"]),
+  &:not(.has-sidebar-page)[class*="category-"]:not([class*="archetype-"]) {
+    #main-outlet-wrapper {
+      background-color: red;
+      grid-template-areas:
+        "category-banner category-banner category-banner category-banner"
+        "content content content sidebar2";
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      // grid-template-columns: 3fr 1fr;
+      grid-template-rows: auto;
+      column-gap: 0.5em;
 
-  .sidebar-wrapper {
-    grid-area: l-sidebar;
-    width: min-content;
-  }
+      @media screen and (max-width: 1500px) {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        // grid-template-columns: 3fr 1fr;
+      }
 
-  .sidebar-container {
-    min-width: 15rem;
-    max-width: 20rem;
-  }
+      @media screen and (max-width: 1160px) {
+        .custom-right-sidebar {
+          display: none;
+        }
+        grid-template-areas:
+          "category-banner"
+          "content";
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        grid-template-columns: 1fr;
+      }
 
-  .custom-right-sidebar {
-    min-width: min-content;
-    grid-area: r-sidebar;
-    max-width: 20rem;
-    flex-shrink: 0;
-    flex-grow: 0;
-  }
-
-  #main-outlet > * {
-    width: 100%;
-    flex-grow: 1;
-  }
-
-  #main-outlet {
-    grid-area: content;
-    grid-column: 1 / -1;
-  }
-
-  @media screen and (max-width: 1000px) {
-    .custom-right-sidebar {
-      display: none;
-    }
-
-    &:not(.has-sidebar-page) #main-outlet-wrapper {
-      grid-template-areas: 
-      "category-banner"
-      "content";
-      grid-template-columns: 1fr;
-      grid-column-gap: 0;
-    }
-
-    &.has-sidebar-page #main-outlet-wrapper {
-      grid-template-areas: 
-      "l-sidebar category-banner"
-      "l-sidebar content";
-      grid-template-columns: minmax(0, 15rem) 1fr;
-      gap: 0 2rem;
+      @media screen and (max-width: 768px) {
+        gap: 0.5em;
+      }
     }
   }
-}
 
-.custom-right-sidebar:empty {
-  display: none;
+
+  // &.has-sidebar-page.tags-page,
+  // &.has-sidebar-page[class*="navigation-"]:not([class*="archetype-"]),
+  // &.has-sidebar-page[class*="category-"]:not([class*="archetype-"]) {
+  //   #main-outlet-wrapper {
+  //     background-color: blue;
+  //     grid-template-areas:
+  //       "sidebar category-banner category-banner category-banner category-banner category-banner"
+  //       "sidebar lspace content sidebar2 rspace sidebar-spacer";
+
+  //     @media screen and (max-width: 1160px) {
+  //       .custom-right-sidebar {
+  //         display: none;
+  //       }
+  //       grid-template-areas:
+  //         "sidebar category-banner category-banner category-banner category-banner"
+  //         "sidebar lspace content rspace sidebar-spacer";
+  //       grid-template-columns: auto 1fr minmax(0, 640px) 1fr auto;
+  //     }
+  //   }
+  // }
+
+  // &[class*="user-"],
+  // &.archetype-regular {
+  //   .custom-tag-banner,
+  //   .custom-category-banner,
+  //   .custom-right-sidebar {
+  //     display: none;
+  //   }
+  // }
 }
 
 .d-modal__container {
