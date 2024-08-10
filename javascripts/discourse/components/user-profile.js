@@ -6,9 +6,7 @@ import { getURLWithCDN } from "discourse-common/lib/get-url";
 import { tracked } from "@glimmer/tracking";
 import { action } from "@ember/object";
 
-const endpoint = settings.site_navigation_links_endpoint;
-
-export default class SidebarWelcome extends Component {
+export default class UserProfile extends Component {
   @service router;
   @service composer;
   @service siteSettings;
