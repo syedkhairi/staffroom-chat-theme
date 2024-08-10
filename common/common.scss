@@ -56,7 +56,6 @@ body {
     "l-sidebar content r-sidebar";
     grid-template-columns: repeat(4, minmax(0, 1fr));
     column-gap: 2rem;
-    grid-auto-rows: auto;
   }
 
   .sidebar-wrapper {
@@ -77,6 +76,7 @@ body {
   }
 
   #main-outlet-wrapper #main-outlet {
+    grid-row: span 2 / span 2;
     grid-area: content category-banner;
     width: 100%;
   }
