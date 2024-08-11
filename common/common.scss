@@ -136,6 +136,8 @@ body {
   background-image: none !important; /* overrides category bg because we use it for banners instead */
 
   &:not(.has-sidebar-page) {
+    padding-left: 1rem;
+    padding-right: 1rem;
     .sidebar-wrapper {
       background: var(--redditish-bg-color);
     }
@@ -151,6 +153,8 @@ body {
   &[class*="navigation-"]:not([class*="archetype-"]),
   &[class*="category-"]:not([class*="archetype-"]) {
     #main-outlet-wrapper {
+      padding-left: 1rem;
+      padding-right: 1rem;
       grid-template-areas:
         "category-banner category-banner category-banner category-banner category-banner category-banner"
         "sidebar lspace content sidebar2 rspace sidebar-spacer";
@@ -184,6 +188,7 @@ body {
   &.has-sidebar-page[class*="navigation-"]:not([class*="archetype-"]),
   &.has-sidebar-page[class*="category-"]:not([class*="archetype-"]) {
     #main-outlet-wrapper {
+      padding-right: 1rem;
       padding-left: 1rem;
       grid-template-areas:
         "sidebar category-banner category-banner category-banner category-banner category-banner"
@@ -203,6 +208,9 @@ body {
 
   &[class*="user-"],
   &.archetype-regular {
+    padding-left: 1rem;
+    padding-right: 1rem;
+
     .custom-tag-banner,
     .custom-category-banner,
     .custom-right-sidebar {
