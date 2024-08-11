@@ -383,3 +383,16 @@ h3 {
     display: none;
   }
 }
+
+.user-badge, .user-card .badge-section .more-user-badges a {
+  border: 0;
+  border-radius: 0.375rem;
+}
+
+.user-card, .group-card {
+  border-radius: var(--d-button-border-radius);
+}
+
+.badge-card {
+  border: 0;
+}
