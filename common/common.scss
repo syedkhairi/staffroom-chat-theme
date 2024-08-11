@@ -376,3 +376,10 @@ h3 {
   padding-left: 0;
   padding-right: 0;
 }
+
+.topic-status-info, .topic-timer-info {
+  &:empty {
+    border: 0;
+    display: none;
+  }
+}
