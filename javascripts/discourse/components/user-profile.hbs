@@ -10,8 +10,11 @@
       </div>
       <div class="w-full p-5">
         <div class="-mt-12 sm:-mt-16 sm:flex sm:items-end sm:space-x-5">
-          <div class="mx-auto flex">
+          <div class="relative mx-auto flex">
             <img class="size-28 rounded-full ring-4 ring-white sm:size-24" src={{this.avatarUrl}} alt="" />
+            {{#if this.flairUrl}}
+              <img class="absolute bottom-0 right-0 block size-7" src={{this.flairUrl}} />
+            {{/if}}
           </div>
         </div>
         <div class="text-center mt-5">

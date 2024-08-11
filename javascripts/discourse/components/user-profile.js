@@ -13,6 +13,7 @@ export default class UserProfile extends Component {
   @service site;
   @service currentUser;
   @tracked bgUrl = null;
+  @tracked flairUrl = null;
 
   get isTopRoute() {
     const { currentRoute } = this.router;
@@ -29,8 +30,10 @@ export default class UserProfile extends Component {
    try {
       const response = await fetch(`/u/${this.currentUser.username}.json`);
       const data = await response.json(); // assuming this is json
-      const userCardBg = data.user.profile_background_upload_url;
-      this.bgUrl = getURLWithCDN(userCardBg);
+      const profileBgUrl = data.user.profile_background_upload_url;
+      const userFlairUrl = data.user.flair_url;
+      this.bgUrl = getURLWithCDN(profileBgUrl);
+      this.flairUrl = getURLWithCDN(userFlairUrl);
     } catch (error) {
       console.error("Failed:", error);
     }
